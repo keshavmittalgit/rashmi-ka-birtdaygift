@@ -14,7 +14,7 @@ export const BirthdayApp: React.FC = () => {
   const giftModalRef = useRef<HTMLDivElement>(null);
 
 
-  // Preload all GIF images during the loader phase & sync progress bar
+  // Preload all GIF images during the loader phase & sync progress bar continuously
   useEffect(() => {
     const gifsToPreload = [
       '/Let%20Me%20Think%20What%20GIF.gif',
@@ -33,29 +33,25 @@ export const BirthdayApp: React.FC = () => {
       const img = new Image();
       img.onload = img.onerror = () => {
         loadedCount += 1;
+        const assetProgress = Math.floor((loadedCount / totalGifs) * 100);
+        setProgress((prev) => Math.max(prev, assetProgress));
       };
       img.src = src;
     });
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        const realPercentage = Math.floor((loadedCount / totalGifs) * 100);
-        const next = prev + 2;
-
-        if (next >= 100) {
+        if (prev >= 100) {
           clearInterval(timer);
           return 100;
         }
-        // Hold at 90% if asset preloading is still finishing on slow mobile connections
-        if (next > 90 && realPercentage < 100) {
-          return 90;
-        }
-        return next;
+        return prev + 1;
       });
-    }, 35);
+    }, 20);
 
     return () => clearInterval(timer);
   }, []);
+
 
 
 
