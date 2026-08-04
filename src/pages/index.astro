@@ -1,0 +1,32 @@
+---
+import { BirthdayApp } from '../components/BirthdayApp';
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Happy Birthday! ❤️</title>
+		<!-- Google Fonts for Figma Design System: Inter & JetBrains Mono -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+		<!-- Preload all GIF animation assets for zero-flicker instant playback -->
+		<link rel="preload" as="image" href="/Let%20Me%20Think%20What%20GIF.gif" />
+		<link rel="preload" as="image" href="/cool-cat-cool.gif" />
+		<link rel="preload" as="image" href="/cute-cat-cat-cute.gif" />
+		<link rel="preload" as="image" href="/attention-attention-taps.gif" />
+		<link rel="preload" as="image" href="/googly-eyes-kitty-eyes.gif" />
+		<link rel="preload" as="image" href="/love-you-loving-cat.gif" />
+		<link rel="preload" as="image" href="/peach-goma.gif" />
+
+		<script is:inline src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+	</head>
+	<body class="bg-[#ffffff] min-h-screen touch-manipulation select-none overflow-hidden">
+		<BirthdayApp client:load />
+	</body>
+
+</html>
