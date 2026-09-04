@@ -319,7 +319,7 @@ export const BirthdayApp: React.FC = () => {
                 I knew it!
               </h1>
               <p className="text-lg sm:text-xl font-bold text-black/80">
-                Happy Birthday Rashmi
+                Happy Birthday Vidhi
               </p>
             </div>
 
